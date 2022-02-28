@@ -6,6 +6,8 @@ import com.baeldung.ecommerce.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class ProductServiceImpl implements ProductService {
@@ -31,5 +33,20 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product save(Product product) {
         return productRepository.save(product);
+    }
+
+    @Override
+    public Product create(Product product) {
+        return this.productRepository.save(product);
+    }
+
+    @Override
+    public boolean deleteByID(long id) {
+        Optional<Product> optionalDrink = this.productRepository.findById(id);
+        if (optionalDrink.isPresent()) {
+            this.productRepository.deleteById(id);
+            return !this.productRepository.existsById(id);
+        } else throw new ResourceNotFoundException("ID does not exist, please select an ID from the database");
+
     }
 }
