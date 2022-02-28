@@ -18,11 +18,16 @@ public class Product {
 
     private String pictureUrl;
 
-    public Product(Long id, @NotNull(message = "Product name is required.") String name, Double price, String pictureUrl) {
+
+
+    private Long stock;
+
+    public Product(Long id, @NotNull(message = "Product name is required.") String name, Double price, String pictureUrl, Long stock) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.pictureUrl = pictureUrl;
+        this.stock = stock;
     }
 
     public Product() {
@@ -58,5 +63,13 @@ public class Product {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public Long getStock() {
+        return stock;
+    }
+
+    public void setStock(Long stock) {
+        this.stock = stock;
     }
 }

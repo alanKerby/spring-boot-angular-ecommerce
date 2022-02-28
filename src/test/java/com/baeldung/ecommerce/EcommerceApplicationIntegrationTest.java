@@ -91,7 +91,7 @@ public class EcommerceApplicationIntegrationTest {
     private OrderController.OrderForm prepareOrderForm() {
         OrderController.OrderForm orderForm = new OrderController.OrderForm();
         OrderProductDto productDto = new OrderProductDto();
-        productDto.setProduct(new Product(1L, "TV Set", 300.00, "http://placehold.it/200x100"));
+        productDto.setProduct(new Product(1L, "TV Set", 300.00, "http://placehold.it/200x100", 1L));
         productDto.setQuantity(2);
         orderForm.setProductOrders(Collections.singletonList(productDto));
 
