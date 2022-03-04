@@ -1,9 +1,9 @@
 package com.baeldung.ecommerce;
 
-//import com.baeldung.ecommerce.model.Product;
-//import com.baeldung.ecommerce.service.ProductService;
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.context.annotation.Bean;
+import com.baeldung.ecommerce.model.Product;
+import com.baeldung.ecommerce.service.ProductService;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

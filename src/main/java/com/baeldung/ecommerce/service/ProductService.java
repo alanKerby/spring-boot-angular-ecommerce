@@ -5,6 +5,7 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Validated
 public interface ProductService {
@@ -18,4 +19,8 @@ public interface ProductService {
     Product create(Product product);
 
     boolean deleteByID(long id);
+
+    List<Product> readAll();
+
+    Product updateByID(long id, Product product);
 }

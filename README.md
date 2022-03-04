@@ -6,3 +6,7 @@ This module contains articles about Spring Boot with Angular
 
 - [Building a Web Application with Spring Boot and Angular](https://www.baeldung.com/spring-boot-angular-web)
 - [A Simple E-Commerce Implementation with Spring](https://www.baeldung.com/spring-angular-ecommerce)
+
+### Starting Frontend in Terminal
+>>cd /Users/alk/golden-shoe-projects/spring-boot-angular-alan/src/main/js/ecommerce
+>>npm start

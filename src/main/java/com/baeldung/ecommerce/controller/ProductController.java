@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
@@ -31,6 +32,16 @@ public class ProductController {
     @DeleteMapping("delete-product-by-id/{id}")
     public ResponseEntity<Boolean> deleteProductByID(@PathVariable Long id) {
         return new ResponseEntity<>(productService.deleteByID(id), HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("read-all-products")
+    public ResponseEntity<List<Product>> readAllDrinks() {
+        return new ResponseEntity<>(productService.readAll(), HttpStatus.OK);
+    }
+
+    @PutMapping("update-product-by-id/{id}")
+    public ResponseEntity<Product> updateProductByID(@PathVariable Long id, @RequestBody Product product) {
+        return new ResponseEntity<>(productService.updateByID(id, product), HttpStatus.ACCEPTED);
     }
 
 
