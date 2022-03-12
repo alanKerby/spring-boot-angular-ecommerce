@@ -9,6 +9,9 @@ import {ProductsComponent} from './ecommerce/products/products.component';
 import {ShoppingCartComponent} from './ecommerce/shopping-cart/shopping-cart.component';
 import {OrdersComponent} from './ecommerce/orders/orders.component';
 import {EcommerceService} from "./ecommerce/services/EcommerceService";
+import {FooterComponent} from "./ecommerce/footer/footer.component"
+import {HeaderComponent} from "./ecommerce/header/header.component";
+import {HomepageComponent} from "./ecommerce/homepage/homepage.component";
 
 @NgModule({
     declarations: [
@@ -16,7 +19,10 @@ import {EcommerceService} from "./ecommerce/services/EcommerceService";
         EcommerceComponent,
         ProductsComponent,
         ShoppingCartComponent,
-        OrdersComponent
+        OrdersComponent,
+        FooterComponent,
+        HeaderComponent,
+        HomepageComponent
     ],
     imports: [
         BrowserModule,
