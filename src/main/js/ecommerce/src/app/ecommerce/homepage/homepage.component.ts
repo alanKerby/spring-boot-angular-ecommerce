@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-
-
+import {Component, OnInit} from '@angular/core';
+import {Product} from "../models/product.model";
+import {EcommerceService} from "../services/EcommerceService";
+import {ProductOrder} from "../models/product-order.model";
 
 @Component({
     selector: 'app-homepage',
@@ -10,18 +11,33 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 
 export class HomepageComponent implements OnInit {
-    @Input() title: string;
-    homeFinished: boolean;
-    @Output() onHomeFinished: EventEmitter<boolean>;
+    productOrders: ProductOrder[] = [];
+    products: Product[] = [];
 
-    finishHome() {
-        this.homeFinished = true;
-        this.onHomeFinished.emit(this.homeFinished);
+    constructor(private ecommerceService: EcommerceService) {
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
+        this.productOrders = [];
+        this.loadProducts();
     }
 
+    loadProducts() {
+        this.ecommerceService.getAllProducts()
+            .subscribe(
+                (products: any[]) => {
+                    this.products = products;
+                    this.products.forEach(product => {
+                        this.productOrders.push(new ProductOrder(product, 0));
+                    })
+                },
+                (error) => console.log(error)
+            );
+    }
+
+    reset() {
+        this.productOrders = [];
+        this.loadProducts();
+        this.ecommerceService.ProductOrders.productOrders = [];
+    }
 }
-
-

@@ -87,7 +87,6 @@
         </div>
     </div>
 </div>
-
 <div class="site-section block-3 site-blocks-2 bg-light">
     <div class="container">
         <div class="row justify-content-center">
@@ -95,35 +94,13 @@
                 <h2>Featured Products</h2>
             </div>
         </div>
-        <div class="row">
+        <div class="row"  *ngFor="let order of productOrders">
             <div class="col-md-12">
                 <div class="nonloop-block-3 owl-carousel">
                     <div class="item">
                         <div class="block-4 text-center">
                             <figure class="block-4-image">
-                                <img src="assets/images/Memi Zip Black Croc.png" alt="Image placeholder" class="img-fluid">
-                            </figure>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="block-4 text-center">
-                            <figure class="block-4-image">
-                                <img src="assets/images/Citi Stride Wing Dark Tan Leather.png" alt="Image placeholder" class="img-fluid">
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="block-4 text-center">
-                            <figure class="block-4-image">
-                                <img src="assets/images/Violet 55 Court Wine Suede.png" alt="Image placeholder" class="img-fluid">
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="block-4 text-center">
-                            <figure class="block-4-image">
-                                <a routerLink="/product" > <img src="assets/images/Layton Pace Rose Gold.png" alt="Image placeholder" class="img-fluid"/></a>
+                                <img src={{order.product.pictureUrl}} alt="Image placeholder" class="img-fluid">
                             </figure>
                         </div>
                     </div>
