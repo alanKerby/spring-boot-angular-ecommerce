@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+
+
 
 @Component({
     selector: 'app-homepage',
@@ -7,8 +9,19 @@ import {Component, Input, OnInit} from '@angular/core';
 
 })
 
-export class HomepageComponent {
+export class HomepageComponent implements OnInit {
     @Input() title: string;
+    homeFinished: boolean;
+    @Output() onHomeFinished: EventEmitter<boolean>;
+
+    finishHome() {
+        this.homeFinished = true;
+        this.onHomeFinished.emit(this.homeFinished);
+    }
+
+    ngOnInit(): void {
+    }
+
 }
 
 

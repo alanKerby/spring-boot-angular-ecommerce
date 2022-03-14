@@ -2,6 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from "@angular/router";
 
 import {AppComponent} from './app.component';
 import {EcommerceComponent} from './ecommerce/ecommerce.component';
@@ -28,7 +29,12 @@ import {HomepageComponent} from "./ecommerce/homepage/homepage.component";
         BrowserModule,
         HttpClientModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule.forRoot([
+            {path: '', component: HomepageComponent},
+            {path: 'product', component: ProductsComponent},
+            {path: 'cart', component: ShoppingCartComponent}
+        ])
     ],
     providers: [EcommerceService],
     bootstrap: [AppComponent]
