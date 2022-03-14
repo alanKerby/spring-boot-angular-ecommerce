@@ -24,6 +24,16 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    @GetMapping(value = { "readById/{id}"})
+    public @NotNull Product getProduct(@PathVariable Long id) {
+        return productService.getProduct(id);
+    }
+
+//    @GetMapping("readById/{id}")
+//    public ResponseEntity<Product> getProduct(@PathVariable Long id) {
+//        return new ResponseEntity<Product>(productService.getProduct(id), HttpStatus.FOUND);
+//    }
+
     @PostMapping("/create-product")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         return new ResponseEntity<>(productService.create(product), HttpStatus.CREATED);
@@ -34,15 +44,8 @@ public class ProductController {
         return new ResponseEntity<>(productService.deleteByID(id), HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("read-all-products")
-    public ResponseEntity<List<Product>> readAllDrinks() {
-        return new ResponseEntity<>(productService.readAll(), HttpStatus.OK);
-    }
-
     @PutMapping("update-product-by-id/{id}")
     public ResponseEntity<Product> updateProductByID(@PathVariable Long id, @RequestBody Product product) {
         return new ResponseEntity<>(productService.updateByID(id, product), HttpStatus.ACCEPTED);
     }
-
-
 }

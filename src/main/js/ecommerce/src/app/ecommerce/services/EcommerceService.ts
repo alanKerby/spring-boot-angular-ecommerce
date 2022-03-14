@@ -29,6 +29,10 @@ export class EcommerceService {
         return this.http.get(this.productsUrl);
     }
 
+    getProduct(id) {
+        return this.http.get("/api/products/readById/" + id);
+    }
+
     saveOrder(order: ProductOrders) {
         return this.http.post(this.ordersUrl, order);
     }

@@ -32,7 +32,7 @@ import {HomepageComponent} from "./ecommerce/homepage/homepage.component";
         ReactiveFormsModule,
         RouterModule.forRoot([
             {path: '', component: HomepageComponent},
-            {path: 'product', component: ProductsComponent},
+            {path: 'product/:id', component: ProductsComponent},
             {path: 'cart', component: ShoppingCartComponent}
         ])
     ],

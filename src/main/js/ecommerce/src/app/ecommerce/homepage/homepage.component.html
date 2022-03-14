@@ -100,7 +100,8 @@
                     <div class="item">
                         <div class="block-4 text-center">
                             <figure class="block-4-image">
-                                <img src={{order.product.pictureUrl}} alt="Image placeholder" class="img-fluid">
+<!--                                <img  routerLink="/product" src={{order.product.pictureUrl}} alt="Image placeholder" class="img-fluid">-->
+                                <img  [routerLink]="['/product', order.product.id]" src={{order.product.pictureUrl}} alt="Image placeholder" class="img-fluid">
                             </figure>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ import {EcommerceService} from "../services/EcommerceService";
 import {Subscription} from "rxjs/internal/Subscription";
 import {ProductOrders} from "../models/product-orders.model";
 import {Product} from "../models/product.model";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-products',
@@ -12,19 +13,37 @@ import {Product} from "../models/product.model";
 })
 export class ProductsComponent implements OnInit {
     productOrders: ProductOrder[] = [];
-    products: Product[] = [];
+    products: any[] = [];
     selectedProductOrder: ProductOrder;
     private shoppingCartOrders: ProductOrders;
     sub: Subscription;
     productSelected: boolean = false;
+    routeID;
 
-    constructor(private ecommerceService: EcommerceService) {
+    constructor(private ecommerceService: EcommerceService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
+        this.route.paramMap.subscribe(params => {
+            let id = params.get('id');
+            this.routeID = id;
+        });
         this.productOrders = [];
         this.loadProducts();
         this.loadOrders();
+    }
+
+    loadProducts() {
+        this.ecommerceService.getAllProducts()
+            .subscribe(
+                (products: any[]) => {
+                    this.products = products;
+                    this.products.forEach(product => {
+                        this.productOrders.push(new ProductOrder(product, 0));
+                    })
+                },
+                (error) => console.log(error)
+            );
     }
 
     addToCart(order: ProductOrder) {
@@ -51,19 +70,6 @@ export class ProductsComponent implements OnInit {
 
     isProductSelected(product: Product): boolean {
         return this.getProductIndex(product) > -1;
-    }
-
-    loadProducts() {
-        this.ecommerceService.getAllProducts()
-            .subscribe(
-                (products: any[]) => {
-                    this.products = products;
-                    this.products.forEach(product => {
-                        this.productOrders.push(new ProductOrder(product, 0));
-                    })
-                },
-                (error) => console.log(error)
-            );
     }
 
     loadOrders() {

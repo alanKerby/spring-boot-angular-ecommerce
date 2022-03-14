@@ -5,6 +5,7 @@ import com.alan.ecommerce.exception.ResourceNotFoundException;
 import com.alan.ecommerce.model.Order;
 import com.alan.ecommerce.model.OrderProduct;
 import com.alan.ecommerce.model.OrderStatus;
+import com.alan.ecommerce.model.Product;
 import com.alan.ecommerce.service.OrderProductService;
 import com.alan.ecommerce.service.OrderService;
 import com.alan.ecommerce.service.ProductService;
@@ -51,7 +52,7 @@ public class OrderController {
 
         List<OrderProduct> orderProducts = new ArrayList<>();
         for (OrderProductDto dto : formDtos) {
-            orderProducts.add(orderProductService.create(new OrderProduct(order, productService.getProduct(dto
+            orderProducts.add(orderProductService.create(new OrderProduct(order, (Product) productService.getProduct(dto
               .getProduct()
               .getId()), dto.getQuantity())));
         }
