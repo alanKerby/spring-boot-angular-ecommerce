@@ -19,19 +19,37 @@ export class ProductsComponent implements OnInit {
     sub: Subscription;
     productSelected: boolean = false;
     routeID;
+    singleProduct: Product | undefined;
 
     constructor(private ecommerceService: EcommerceService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
+
+        this.productOrders = [];
+        this.loadProducts();
+        this.loadOrders();
+        this.getRouteId()
+        this.getProduct()
+    }
+
+    getRouteId() {
         this.route.paramMap.subscribe(params => {
             let id = params.get('id');
             this.routeID = id;
         });
-        this.productOrders = [];
-        this.loadProducts();
-        this.loadOrders();
     }
+
+    getProduct() {
+        this.ecommerceService.getProduct(this.routeID)
+            .subscribe(product => this.singleProduct = product)
+    }
+
+    // getProduct(): void {
+    //     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    //     this.heroService.getHero(id)
+    //         .subscribe(hero => this.hero = hero);
+    // }
 
     loadProducts() {
         this.ecommerceService.getAllProducts()
