@@ -58,9 +58,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateByID(long id, Product product) {
-        Optional<Product> optionalDrink = this.productRepository.findById(id);
-        if (optionalDrink.isPresent()) {
-            Product temp = optionalDrink.get();
+        Optional<Product> optionalProduct = this.productRepository.findById(id);
+        if (optionalProduct.isPresent()) {
+            Product temp = optionalProduct.get();
             temp.setName(product.getName());
             temp.setPrice(product.getPrice());
             temp.setStock(product.getStock());

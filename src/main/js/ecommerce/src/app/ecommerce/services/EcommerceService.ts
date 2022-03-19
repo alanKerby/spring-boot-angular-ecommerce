@@ -4,7 +4,7 @@ import {ProductOrders} from "../models/product-orders.model";
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from "@angular/core";
 import {Observable, of} from "rxjs";
-import {Product} from "../models/product.model";
+import {Product, updateProduct} from "../models/product.model";
 import {catchError, map, tap} from "rxjs/operators";
 import {MessageService} from "./message.service";
 
@@ -13,8 +13,10 @@ import {MessageService} from "./message.service";
 export class EcommerceService {
     private productsUrl = "/api/products";
     private ordersUrl = "/api/orders";
-    private singleProductUrl = 'api/products/readById'
+    private singleProductUrl = 'api/products/readById';
+    private updateProductUrl = 'api/products/update-product-by-id';
 
+    private tempProduct: Observable<updateProduct> | undefined;
     private productOrder: ProductOrder;
     private orders: ProductOrders = new ProductOrders();
 
@@ -31,18 +33,17 @@ export class EcommerceService {
 
     constructor(
         private http: HttpClient,
-    private messageService: MessageService) { }
+        private messageService: MessageService) {
+    }
 
-    /** GET hero by id. Will 404 if id not found */
     getProduct(id: number): Observable<Product> {
         const url = `${this.singleProductUrl}/${id}`;
         return this.http.get<Product>(url).pipe(
-            tap(_ => this.log(`fetched hero id=${id}`)),
-            catchError(this.handleError<Product>(`getHero id=${id}`))
+            tap(_ => this.log(`fetched product id=${id}`)),
+            catchError(this.handleError<Product>(`getProduct id=${id}`))
         );
     }
 
-    /** Log a HeroService message with the MessageService */
     private log(message: string) {
         this.messageService.add(`ProductService: ${message}`);
     }
@@ -54,6 +55,13 @@ export class EcommerceService {
             return of(result as T);
         };
     }
+
+    // updateProduct(product: Product): Observable<Product> {
+    //     return this.http.post<Product>(this.updateProductUrl, product.id, product)
+    //         .pipe(
+    //             catchError(this.handleError('updateProduct', product))
+    //         );
+    // }
 
     getAllProducts() {
         return this.http.get(this.productsUrl);

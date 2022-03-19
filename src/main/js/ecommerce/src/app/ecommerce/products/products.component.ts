@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {ProductOrder} from "../models/product-order.model";
 import {EcommerceService} from "../services/EcommerceService";
 import {Subscription} from "rxjs/internal/Subscription";
 import {ProductOrders} from "../models/product-orders.model";
 import {Product} from "../models/product.model";
 import {ActivatedRoute} from "@angular/router";
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
     selector: 'app-products',
@@ -20,6 +21,7 @@ export class ProductsComponent implements OnInit {
     productSelected: boolean = false;
     routeID;
     singleProduct: Product | undefined;
+    public cart;
 
     constructor(private ecommerceService: EcommerceService, private route: ActivatedRoute) {
     }
@@ -31,6 +33,15 @@ export class ProductsComponent implements OnInit {
         this.loadOrders();
         this.getRouteId()
         this.getProduct()
+        this.cart = 0;
+    }
+
+    addToCart() {
+        if(this.singleProduct.stock > 0) {
+        this.cart ++;
+        this.singleProduct.stock --;
+        this.ecommerceService.updateProduct(this.singleProduct)
+        }
     }
 
     getRouteId() {
@@ -43,13 +54,8 @@ export class ProductsComponent implements OnInit {
     getProduct() {
         this.ecommerceService.getProduct(this.routeID)
             .subscribe(product => this.singleProduct = product)
+        this.productOrders.push(new ProductOrder(this.singleProduct, 0));
     }
-
-    // getProduct(): void {
-    //     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    //     this.heroService.getHero(id)
-    //         .subscribe(hero => this.hero = hero);
-    // }
 
     loadProducts() {
         this.ecommerceService.getAllProducts()
@@ -64,11 +70,11 @@ export class ProductsComponent implements OnInit {
             );
     }
 
-    addToCart(order: ProductOrder) {
-        this.ecommerceService.SelectedProductOrder = order;
-        this.selectedProductOrder = this.ecommerceService.SelectedProductOrder;
-        this.productSelected = true;
-    }
+    // addToCart(order: ProductOrder) {
+    //     this.ecommerceService.SelectedProductOrder = order;
+    //     this.selectedProductOrder = this.ecommerceService.SelectedProductOrder;
+    //     this.productSelected = true;
+    // }
 
     removeFromCart(productOrder: ProductOrder) {
         let index = this.getProductIndex(productOrder.product);

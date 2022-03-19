@@ -9,6 +9,11 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class HeaderComponent {
     @Input() title: string;
+    @Input() cartNum: number = 0;
 }
+
+
+
+
 
 
