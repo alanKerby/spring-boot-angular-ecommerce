@@ -1,93 +1,32 @@
-<!--<div class="row card-deck">-->
-<!--    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let order of productOrders">-->
-<!--        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let order of productOrders">-->
-<!--            <div class="col-lg-4 col-md-6 mb-4">-->
-<!--                <div class="card text-center">-->
-<!--                    <div class="card-header">-->
-<!--                        <h4>{{order.product.name}}</h4>-->
-<!--                    </div>-->
-<!--                    <div class="card-body">-->
-<!--                        <a href="#"><img class="card-img-top" src={{order.product.pictureUrl}} alt=""></a>-->
-<!--                        <h5 class="card-title">${{order.product.price}}</h5>-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-4 padding-0" *ngIf="!isProductSelected(order.product)">-->
-<!--                                <input type="number" min="0" class="form-control" [(ngModel)]=order.quantity>-->
-<!--                            </div>-->
-<!--                            <div class="col-4 padding-0" *ngIf="!isProductSelected(order.product)">-->
-<!--                                <button class="btn btn-primary" (click)="addToCart(order)"-->
-<!--                                        [disabled]="order.quantity <= 0">Add To Cart-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                            <div class="col-12" *ngIf="isProductSelected(order.product)">-->
-<!--                                <button class="btn btn-primary btn-block"-->
-<!--                                        (click)="removeFromCart(order)">Remove From Cart-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
 <app-header [cartNum]="cart"></app-header>
-    <div class="row" *ngIf="productOrders[0]">
-
-            <div class="col-lg-4 col-md-12 site-section-heading text-center">
-                <h2>{{singleProduct.name}}</h2>
-                <h3>£{{singleProduct.price}}</h3>
-                <br>
-                <h3>Select Size</h3>
-                <div>
-                    <button type="button" class="btn btn-sm btn-light">5</button>
-                    <button type="button" class="btn btn-sm btn-light">6</button>
-                    <button type="button" class="btn btn-sm btn-light">7</button>
-                    <button type="button" class="btn btn-sm btn-light">8</button>
-                    <button type="button" class="btn btn-sm btn-light">9</button>
-                    <button type="button" class="btn btn-sm btn-light">10</button>
-                </div>
-                <button class="btn btn-primary" (click)="addToCart()">Add To Cart
-<!--                    [disabled]="order.quantity <= 0">Add To Cart-->
-                </button>
-            </div>
-            <div class="col-lg-8 col-md-12">
-                <a href="#"><img class="img-fluid" src={{singleProduct.pictureUrl}} alt=""></a>
-            </div>
-
+<div class="row" *ngIf="singleProduct">
+    <div class="col-lg-4 col-md-12 text-black text-center">
+        <div>
+            <br>
+            <h2>{{singleProduct.name}}</h2>
+            <h3>£{{singleProduct.price}}</h3>
         </div>
-
-        <!--<div class="row card-deck">-->
-        <!--    <div class="col-lg-4 col-md-6 mb-4" *ngIf="singleProduct">-->
-        <!--        <div class="col-lg-4 col-md-6 mb-4">-->
-        <!--        <div class="card text-center">-->
-        <!--            <div class="card-header">-->
-        <!--                <h4>{{singleProduct.name}}</h4>-->
-        <!--            </div>-->
-        <!--            <div class="card-body">-->
-        <!--                <a href="#"><img class="card-img-top" src={{singleProduct.pictureUrl}} alt=""></a>-->
-        <!--                <h5 class="card-title">${{singleProduct.price}}</h5>-->
-        <!--                <div class="row">-->
-        <!--                    <div class="col-4 padding-0" *ngIf="!isProductSelected(singleProduct)">-->
-        <!--                        <input type="number" min="0" class="form-control" [(ngModel)]=singleProduct.stock>-->
-        <!--                    </div>-->
-        <!--&lt;!&ndash;                    <div class="col-4 padding-0" *ngIf="!isProductSelected(singleProduct)">&ndash;&gt;-->
-        <!--&lt;!&ndash;                        <button class="btn btn-primary" (click)="addToCart(singleProduct)"&ndash;&gt;-->
-        <!--&lt;!&ndash;                                [disabled]="order.quantity <= 0">Add To Cart&ndash;&gt;-->
-        <!--&lt;!&ndash;                        </button>&ndash;&gt;-->
-        <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-        <!--&lt;!&ndash;                    <div class="col-12" *ngIf="isProductSelected(singleProduct)">&ndash;&gt;-->
-        <!--&lt;!&ndash;                        <button class="btn btn-primary btn-block"&ndash;&gt;-->
-        <!--&lt;!&ndash;&lt;!&ndash;                                (click)="removeFromCart(singleProduct)">Remove From Cart&ndash;&gt;&ndash;&gt;-->
-        <!--&lt;!&ndash;                        </button>&ndash;&gt;-->
-        <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--</div>-->
-        <!--</div>-->
-
-
-
-
-
+        <br>
+        <br>
+        <div class="order-md-2">
+            <h4 class="text-primary">Select Size</h4>
+            <div>
+                <button type="button" class="btn btn-sm btn-light mb-1 mr-1">5</button>
+                <button type="button" class="btn btn-sm btn-light mb-1 mr-1">6</button>
+                <button type="button" class="btn btn-sm btn-light mb-1 mr-1">7</button>
+                <button type="button" class="btn btn-sm btn-light mb-1 mr-1">8</button>
+                <button type="button" class="btn btn-sm btn-light mb-1 mr-1">9</button>
+                <button type="button" class="btn btn-sm btn-light mb-1 mr-1">10</button>
+            </div>
+        </div>
+        <br>
+        <br>
+        <button class="btn btn-primary" (click)="addToCart()"
+                [disabled]="singleProduct.stock <= 0">{{cartButtonSelector(singleProduct)}}
+        </button>
+    </div>
+    <div class="col-lg-8 col-md-12 order-md-1">
+        <a href="#"><img class="img-fluid" src={{singleProduct.pictureUrl}} alt=""></a>
+    </div>
+</div>
 

@@ -1,6 +1,6 @@
 package com.alan.ecommerce;
 
-import com.alan.ecommerce.controller.OrderController;
+
 import com.alan.ecommerce.controller.ProductController;
 import com.alan.ecommerce.model.Product;
 import com.alan.ecommerce.dto.OrderProductDto;
@@ -35,15 +35,12 @@ public class EcommerceApplicationIntegrationTest {
 
     @Autowired private ProductController productController;
 
-    @Autowired private OrderController orderController;
+
 
     @Test
     public void contextLoads() {
         Assertions
           .assertThat(productController)
-          .isNotNull();
-        Assertions
-          .assertThat(orderController)
           .isNotNull();
     }
 
@@ -74,27 +71,5 @@ public class EcommerceApplicationIntegrationTest {
         Assertions
           .assertThat(orders)
           .hasSize(0);
-    }
-
-    @Test
-    public void givenPostOrder_whenBodyRequestMatcherJson_thenResponseContainsEqualObjectProperties() {
-        final ResponseEntity<Order> postResponse = restTemplate.postForEntity("http://localhost:" + port + "/api/orders", prepareOrderForm(), Order.class);
-        Order order = postResponse.getBody();
-        Assertions
-          .assertThat(postResponse.getStatusCode())
-          .isEqualByComparingTo(HttpStatus.CREATED);
-
-        assertThat(order, hasProperty("status", is("PAID")));
-        assertThat(order.getOrderProducts(), hasItem(hasProperty("quantity", is(2))));
-    }
-
-    private OrderController.OrderForm prepareOrderForm() {
-        OrderController.OrderForm orderForm = new OrderController.OrderForm();
-        OrderProductDto productDto = new OrderProductDto();
-        productDto.setProduct(new Product(1L, "TV Set", 300.00, "http://placehold.it/200x100", 1L));
-        productDto.setQuantity(2);
-        orderForm.setProductOrders(Collections.singletonList(productDto));
-
-        return orderForm;
     }
 }

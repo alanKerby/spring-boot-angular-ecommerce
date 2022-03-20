@@ -5,7 +5,6 @@ import {Subscription} from "rxjs/internal/Subscription";
 import {ProductOrders} from "../models/product-orders.model";
 import {Product} from "../models/product.model";
 import {ActivatedRoute} from "@angular/router";
-import {HeaderComponent} from "../header/header.component";
 
 @Component({
     selector: 'app-products',
@@ -15,19 +14,17 @@ import {HeaderComponent} from "../header/header.component";
 export class ProductsComponent implements OnInit {
     productOrders: ProductOrder[] = [];
     products: any[] = [];
-    selectedProductOrder: ProductOrder;
     private shoppingCartOrders: ProductOrders;
     sub: Subscription;
     productSelected: boolean = false;
     routeID;
     singleProduct: Product | undefined;
-    public cart;
+    public cart
 
     constructor(private ecommerceService: EcommerceService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-
         this.productOrders = [];
         this.loadProducts();
         this.loadOrders();
@@ -36,11 +33,18 @@ export class ProductsComponent implements OnInit {
         this.cart = 0;
     }
 
+    cartButtonSelector(product): String {
+        if (product.stock > 0) {
+            return "add to cart";
+        } else {
+            return "out of stock"
+        }
+    }
+
     addToCart() {
         if(this.singleProduct.stock > 0) {
         this.cart ++;
         this.singleProduct.stock --;
-        this.ecommerceService.updateProduct(this.singleProduct)
         }
     }
 
@@ -68,32 +72,6 @@ export class ProductsComponent implements OnInit {
                 },
                 (error) => console.log(error)
             );
-    }
-
-    // addToCart(order: ProductOrder) {
-    //     this.ecommerceService.SelectedProductOrder = order;
-    //     this.selectedProductOrder = this.ecommerceService.SelectedProductOrder;
-    //     this.productSelected = true;
-    // }
-
-    removeFromCart(productOrder: ProductOrder) {
-        let index = this.getProductIndex(productOrder.product);
-        if (index > -1) {
-            this.shoppingCartOrders.productOrders.splice(
-                this.getProductIndex(productOrder.product), 1);
-        }
-        this.ecommerceService.ProductOrders = this.shoppingCartOrders;
-        this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-        this.productSelected = false;
-    }
-
-    getProductIndex(product: Product): number {
-        return this.ecommerceService.ProductOrders.productOrders.findIndex(
-            value => value.product === product);
-    }
-
-    isProductSelected(product: Product): boolean {
-        return this.getProductIndex(product) > -1;
     }
 
     loadOrders() {
