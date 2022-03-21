@@ -1,0 +1,3 @@
+com/alan/ecommerce/controller/ProductControllerUnitTest.class
+com/alan/ecommerce/controller/ProductControllerIntegrationTest.class
+com/alan/ecommerce/model/ProductTest.class
