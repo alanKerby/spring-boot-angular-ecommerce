@@ -1,12 +1,9 @@
 package com.alan.ecommerce.service;
 
-import com.alan.ecommerce.exception.ResourceNotFoundException;
 import com.alan.ecommerce.model.Product;
 import com.alan.ecommerce.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,22 +22,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
-//    @Override
-//    public Product getProduct(long id) {
-//        return productRepository
-//          .findById(id)
-//          .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
-//    }
-
     @Override
     public Product getProduct(long id) {
         Optional<Product> optionalDrink = this.productRepository.findById(id);
         return optionalDrink.orElse(null);
-    }
-
-    @Override
-    public Product save(Product product) {
-        return productRepository.save(product);
     }
 
     @Override
@@ -54,14 +39,9 @@ public class ProductServiceImpl implements ProductService {
         if (optionalDrink.isPresent()) {
             this.productRepository.deleteById(id);
             return !this.productRepository.existsById(id);
-        } else throw new ResourceNotFoundException("ID does not exist, please select an ID from the database");
-
+        }
+        return false;
     }
-
-//    @Override
-//    public List<Product> readAll() {
-//        return (List<Product>) this.productRepository.findAll();
-//    }
 
     @Override
     public Product updateByID(long id, Product product) {
@@ -72,7 +52,6 @@ public class ProductServiceImpl implements ProductService {
             temp.setPrice(product.getPrice());
             temp.setStock(product.getStock());
             temp.setPictureUrl(product.getPictureUrl());
-            //return this.repo.saveAndFlush(temp);
             return this.productRepository.save(temp);
         }
         return null;

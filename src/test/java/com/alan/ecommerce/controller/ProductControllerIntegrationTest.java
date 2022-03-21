@@ -10,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,8 +44,8 @@ public class ProductControllerIntegrationTest {
 
     @Test
     public void readAllProductsIntegrationTest() throws Exception {
-        Product drink1 = new Product(1L,"shoe",11.0,"none",4l);
-        Product drink2 = new Product(2L,"boot",6.0,"none",5l);
+        Product drink1 = new Product(1L,"shoe",11.0,"none",4L);
+        Product drink2 = new Product(2L,"boot",6.0,"none",5L);
         List<Product> drinksInDatabase = Arrays.asList(drink1, drink2);
         String drinksInDatabaseAsJSON = this.objectMapper.writeValueAsString(drinksInDatabase);
         mockMvc.perform(get("/api/products/"))
@@ -57,7 +56,7 @@ public class ProductControllerIntegrationTest {
     @Test
     public void readProductByIDIntegrationTest() throws Exception {
         long id = 2L;
-        Product product = new Product(2L,"boot",6.0,"none",5l);
+        Product product = new Product(2L,"boot",6.0,"none",5L);
         String entryAsJSON = this.objectMapper.writeValueAsString(product);
         mockMvc.perform(get("/api/products/readById/" + id))
                 .andExpect(content().json(entryAsJSON));
@@ -66,7 +65,7 @@ public class ProductControllerIntegrationTest {
     @Test
     public void updateProductByIDIntegrationTest() throws Exception {
         long id = 2L;
-        Product product2WithChanges = new Product(2L,"another boot",6.0,"none",5l);
+        Product product2WithChanges = new Product(2L,"another boot",6.0,"none",5L);
         String productWithChangesAsJSON = this.objectMapper.writeValueAsString(product2WithChanges);
         mockMvc.perform(put("/api/products/update-product-by-id/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
