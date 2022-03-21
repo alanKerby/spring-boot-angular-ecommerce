@@ -1,5 +1,5 @@
 # Ecommerce Demo Project
-## What is the project?
+
 The aim of the project is to demonstrate my ability to develop a Spring Boot application programming interface (API) with create/read/update/delete (CRUD) functionality with an Angular framework frontend and mySQL database. Postman can be used to utilise CRUD functionality. All products in the database are displayed on the homepage, clicking a product navigates to the product page, products can be added to the basket up to the stock limit.
 
 Homepage             |  Product Page
