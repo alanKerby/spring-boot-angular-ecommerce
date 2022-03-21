@@ -13,6 +13,7 @@ import java.util.Optional;
 @Transactional
 public class ProductServiceImpl implements ProductService {
 
+
     private ProductRepository productRepository;
 
     public ProductServiceImpl(ProductRepository productRepository) {
@@ -24,11 +25,17 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
+//    @Override
+//    public Product getProduct(long id) {
+//        return productRepository
+//          .findById(id)
+//          .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+//    }
+
     @Override
     public Product getProduct(long id) {
-        return (Product) productRepository
-          .findById(id)
-          .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+        Optional<Product> optionalDrink = this.productRepository.findById(id);
+        return optionalDrink.orElse(null);
     }
 
     @Override
@@ -51,10 +58,10 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
-    @Override
-    public List<Product> readAll() {
-        return (List<Product>) this.productRepository.findAll();
-    }
+//    @Override
+//    public List<Product> readAll() {
+//        return (List<Product>) this.productRepository.findAll();
+//    }
 
     @Override
     public Product updateByID(long id, Product product) {

@@ -6,6 +6,7 @@ import {ProductOrders} from "../models/product-orders.model";
 import {Product} from "../models/product.model";
 import {ActivatedRoute} from "@angular/router";
 
+
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',

@@ -7,8 +7,6 @@ import {RouterModule} from "@angular/router";
 import {AppComponent} from './app.component';
 import {EcommerceComponent} from './ecommerce/ecommerce.component';
 import {ProductsComponent} from './ecommerce/products/products.component';
-import {ShoppingCartComponent} from './ecommerce/shopping-cart/shopping-cart.component';
-import {OrdersComponent} from './ecommerce/orders/orders.component';
 import {EcommerceService} from "./ecommerce/services/EcommerceService";
 import {FooterComponent} from "./ecommerce/footer/footer.component"
 import {HeaderComponent} from "./ecommerce/header/header.component";
@@ -19,8 +17,6 @@ import {HomepageComponent} from "./ecommerce/homepage/homepage.component";
         AppComponent,
         EcommerceComponent,
         ProductsComponent,
-        ShoppingCartComponent,
-        OrdersComponent,
         FooterComponent,
         HeaderComponent,
         HomepageComponent
@@ -33,7 +29,6 @@ import {HomepageComponent} from "./ecommerce/homepage/homepage.component";
         RouterModule.forRoot([
             {path: '', component: HomepageComponent},
             {path: 'product/:id', component: ProductsComponent},
-            {path: 'cart', component: ShoppingCartComponent}
         ])
     ],
     providers: [EcommerceService],

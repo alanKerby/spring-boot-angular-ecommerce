@@ -12,21 +12,4 @@ export class Product {
         this.pictureUrl = pictureUrl;
         this.stock = stock;
     }
-
-
-}
-
-export class updateProduct {
-    id: number;
-    name: string;
-    price: number;
-    pictureUrl: string;
-    stock: number;
-
-    constructor(name: string, price: number, pictureUrl: string, stock: number) {
-        this.name = name;
-        this.price = price;
-        this.pictureUrl = pictureUrl;
-        this.stock = stock;
-    }
 }

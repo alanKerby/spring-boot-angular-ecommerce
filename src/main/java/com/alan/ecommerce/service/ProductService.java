@@ -14,13 +14,15 @@ public interface ProductService {
 
     Product getProduct(@Min(value = 1L, message = "Invalid product ID.") long id);
 
+//    Product getProduct(long id);
+
     Product save(Product product);
 
     Product create(Product product);
 
     boolean deleteByID(long id);
 
-    List<Product> readAll();
+//    List<Product> readAll();
 
     Product updateByID(long id, Product product);
 }

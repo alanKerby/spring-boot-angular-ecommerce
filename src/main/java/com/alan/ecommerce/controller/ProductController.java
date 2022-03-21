@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
@@ -25,14 +24,9 @@ public class ProductController {
     }
 
     @GetMapping(value = { "readById/{id}"})
-    public @NotNull Product getProduct(@PathVariable Long id) {
+    public Product getProduct(@PathVariable Long id) {
         return productService.getProduct(id);
     }
-
-//    @GetMapping("readById/{id}")
-//    public ResponseEntity<Product> getProduct(@PathVariable Long id) {
-//        return new ResponseEntity<Product>(productService.getProduct(id), HttpStatus.FOUND);
-//    }
 
     @PostMapping("/create-product")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
