@@ -12,11 +12,14 @@ Homepage             |  Product Page
 
 &emsp;`src/main/java/com/alan/ecommerce/EcommerceApplication.java`
 
-* Open terminal/shell in the root folder and input the following to start the backend then frontend:    
+* Open terminal/shell in IDE or the root folder and input the following to start the frontend:    
 
 [comment]: <> (&emsp; `java -jar target/spring-boot-angular-1.0.jar`)
 
-&emsp; `cd src/main/js/ecommerce/dist/frontend && npm start`
+&emsp; `cd src/main/js/ecommerce/dist/frontend && npm install`
+
+&emsp; `npm start`
+
 * View the page at http://localhost:4200/
 
 ## Http Requests
