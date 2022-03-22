@@ -1,6 +1,6 @@
+com/alan/ecommerce/controller/ProductController.class
+com/alan/ecommerce/service/ProductServiceImpl.class
 com/alan/ecommerce/service/ProductService.class
 com/alan/ecommerce/EcommerceApplication.class
-com/alan/ecommerce/controller/ProductController.class
 com/alan/ecommerce/repository/ProductRepository.class
 com/alan/ecommerce/model/Product.class
-com/alan/ecommerce/service/ProductServiceImpl.class
