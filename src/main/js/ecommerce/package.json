@@ -2,8 +2,11 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
+      "heroku-postbuild": "ng build --configuration production && npm install -g http-server-spa",
+      "start": "http-server-spa dist/frontend index.html $PORT",
+
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy-conf.json",
+
     "build": "ng build",
     "postbuild": "npm run deploy",
     "predeploy": "rimraf ../resources/static/ && mkdirp ../resources/static",
