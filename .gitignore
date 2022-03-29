@@ -1,3 +1,4 @@
 # Project exclude paths
 #/target/
 #/src/main/js/
+/src/main/js/ecommerce/node_modules/
