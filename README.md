@@ -7,7 +7,7 @@ Homepage             |  Product Page
 ![](src/assets/homepage.png) |  ![](src/assets/product.png)
 
 ## Usage
-* Create a database in postgresql called "spring-boot-angular-alan"
+* Create a database in postgresql called "golden-shoe"
 * Open terminal/shell in the root folder and start the backend
 
 &emsp; `java -jar target/spring-boot-angular-1.0.jar`
