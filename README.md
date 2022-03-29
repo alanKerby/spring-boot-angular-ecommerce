@@ -7,18 +7,15 @@ Homepage             |  Product Page
 ![](src/assets/homepage.png) |  ![](src/assets/product.png)
 
 ## Usage
-* Create a schema in mySQL called "spring-boot-angular-alan"
-* Open the repository in an IDE and run:
+* Create a database in postgresql called "spring-boot-angular-alan"
+* Open terminal/shell in the root folder and start the backend
 
-&emsp;`src/main/java/com/alan/ecommerce/EcommerceApplication.java`
+&emsp; `java -jar target/spring-boot-angular-1.0.jar`
 
-* Open terminal/shell in IDE or the root folder and input the following to start the frontend:    
+* Open terminal/shell in the root folder and start the frontend
 
-[comment]: <> (&emsp; `java -jar target/spring-boot-angular-1.0.jar`)
+&emsp; `cd src/main/js/ecommerce/dist/frontend && npm start`
 
-&emsp; `cd src/main/js/ecommerce/dist/frontend && npm install`
-
-&emsp; `npm start`
 
 * View the page at http://localhost:4200/
 

@@ -2,8 +2,11 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
+
+      "start": "ng serve --proxy-config proxy-conf.json",
+
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy-conf.json",
+
     "build": "ng build",
     "postbuild": "npm run deploy",
     "predeploy": "rimraf ../resources/static/ && mkdirp ../resources/static",
