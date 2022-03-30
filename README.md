@@ -1,6 +1,21 @@
 # Ecommerce Demo Project
 
-The aim of the project to develop a Spring Boot application programming interface (API) with create/read/update/delete (CRUD) functionality with an Angular framework frontend and mySQL database. Postman can be used to utilise CRUD functionality. All products in the database are displayed on the homepage, clicking a product navigates to the product page, products can be added to the basket up to the stock limit.
+## Aims
+The project was to create a demo webapp for a pitch to a prospective client. The requirements were as follows:
+* A modern webdesign aesthetic.
+* Responsive design to work across multiple user interfaces. 
+* Create/read/update/delete (CRUD) products.
+* Product pages.
+* Ability to add product to basket when in stock.
+
+## Development
+* Bootstrap with custom CSS.
+* Angular JavaScript Framework was used to create a single page application that is fast, responsive to UI size.
+* Routing for individual product pages.
+* A Spring Boot backend with CRUD functionality was created using a PostgreSQL database. 
+* Full testing coverage of the backend was achieved with unit and integration testing.
+* Postman can be used to utilise CRUD functionality.
+* Stock level from the database determines the number of products which can be added to the basket.
 
 Homepage             |  Product Page
 :-------------------------:|:-------------------------:
@@ -54,9 +69,6 @@ PUT: http://localhost:8080/api/products/update-product-by-id/1
 
 Example JSON:
 { "name": "Layton Pace Rose Gold", "price" : 49.0, "pictureUrl": ""assets/images/Layton Pace Rose Gold.png"", "stock": 2 }
-
-Below are screenshots of Postman and MySQL to demonstrate CRUD functionality.
-
 
 ### Backend Testing Coverage Report
 ![Tux, the Linux mascot](src/assets/coverage.png)
