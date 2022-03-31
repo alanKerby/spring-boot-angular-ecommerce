@@ -72,6 +72,3 @@ Example JSON:
 
 ### Backend Testing Coverage Report
 ![Tux, the Linux mascot](src/assets/coverage.png)
-### Authors and Acknowledgment
-Developed by Alan Kerby with some use of an [Angular template](https://www.baeldung.com/spring-angular-ecommerce) and a [Bootstrap template](https://themewagon.com/themes/free-bootstrap-4-html5-ecommerece-website-template-shoppers/)
-
